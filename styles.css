@@ -1,0 +1,128 @@
+:root {
+    --primary-color: #FF6B6B;
+    --secondary-color: #4ECDC4;
+    --bg-light: #F7FFF7;
+    --text-dark: #333;
+}
+
+* {
+    box-sizing: border-box;
+    touch-action: manipulation;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-light);
+    overscroll-behavior-y: none;
+}
+
+.container-fluid {
+    padding: 0;
+}
+
+.board-container {
+    overflow-x: auto;
+    touch-action: pan-x pan-y;
+    -webkit-overflow-scrolling: touch;
+}
+
+.kanban-board {
+    display: flex;
+    gap: 15px;
+    padding: 15px;
+}
+
+.kanban-column {
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    min-width: 300px;
+    max-width: 350px;
+}
+
+.column-header {
+    padding: 10px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-list {
+    min-height: 70vh;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.task-card {
+    background-color: white;
+    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+    position: relative;
+}
+
+.task-card:hover {
+    transform: scale(1.02);
+}
+
+.task-card.baixa { border-left: 4px solid green; }
+.task-card.media { border-left: 4px solid orange; }
+.task-card.alta { border-left: 4px solid red; }
+
+.task-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.task-priority {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 0.8em;
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+.baixa-priority { background-color: green; color: white; }
+.media-priority { background-color: orange; color: white; }
+.alta-priority { background-color: red; color: white; }
+
+@media (max-width: 768px) {
+    .kanban-board {
+        flex-direction: column;
+        overflow-x: scroll;
+    }
+
+    .kanban-column {
+        min-width: 100%;
+        max-width: 100%;
+    }
+}
+
+#voiceBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.voice-recording {
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
